@@ -1,0 +1,51 @@
+def solution(answers):
+    answer = []
+    idiot1 = [1,2,3,4,5]
+    idiot2 = [2,1,2,3,2,4,2,5]
+    idiot3 = [3,3,1,1,2,2,4,4,5,5]
+    answer_1 = 0
+    answer_2 = 0
+    answer_3 = 0
+    
+    for i in range(len(answers)):
+        if answers[i] == idiot1[i%len(idiot1)]:
+            answer_1 += 1
+        if answers[i] == idiot2[i%len(idiot2)]:
+            answer_2 += 1
+        if answers[i] == idiot3[i%len(idiot3)]:
+            answer_3 += 1
+    
+    answerlist = [answer_1, answer_2, answer_3]
+    
+    for j,k in enumerate(answerlist):
+        if k == max(answerlist):
+            answer.append(j+1)
+            
+    if answer_1 == answer_2 and answer_2 == answer_3:
+        print("모든 사람이 {0}문제씩을 맞췄습니다." .format(answer_1))
+        return answer
+    
+    if answer_1 == len(answers):
+        print("수포자 1은 모든 문제를 맞혔습니다.")
+    elif answer_1 == 0:
+        print("수포자 1은 모든 문제를 틀렸습니다.")
+    else:
+        print("수포자 1은 {0} 문제를 맞혔습니다." .format(answer_1))
+
+
+    if answer_2 == len(answers):
+            print("수포자 2는 모든 문제를 맞혔습니다.")
+    elif answer_2 == 0:
+        print("수포자 2는 모든 문제를 틀렸습니다.")
+    else:
+        print("수포자 2는 {0} 문제를 맞혔습니다." .format(answer_2))
+
+
+    if answer_3 == len(answers):
+            print("수포자 3은 모든 문제를 맞혔습니다.")
+    elif answer_3 == 0:
+        print("수포자 3은 모든 문제를 틀렸습니다.")
+    else:
+        print("수포자 3은 {0} 문제를 맞혔습니다." .format(answer_3))
+    
+    return answer
