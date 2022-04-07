@@ -1,0 +1,22 @@
+from itertools import combinations
+
+def solution(nums):
+    answer = 0
+    n_list = list(combinations(nums,3))
+    
+    for i in n_list: # 조합을 돌면서
+        sum = 0
+        is_prime = 0
+        for j in i: # 조합의 값들을 더해주고
+            sum += j
+        for k in range(2,int(sum**0.5+1)): # 그 합의 제곱근까지 돌면서
+            if sum % k == 0: # 만약에 소수라면
+                is_prime = 0
+                break
+            else:
+                is_prime = 1
+        if is_prime == 1: # answer에 1을 더해준다
+            answer += 1
+            
+
+    return answer
