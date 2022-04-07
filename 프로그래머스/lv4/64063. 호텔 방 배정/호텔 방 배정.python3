@@ -1,0 +1,23 @@
+from collections import defaultdict
+import sys
+
+sys.setrecursionlimit(10**9)
+
+def solution(k, room_number):
+    answer = []
+
+    def is_assigned(number, upper_room):
+        if number not in upper_room:
+            upper_room[number] = number + 1
+            return number
+
+        room = is_assigned(upper_room[number], upper_room)
+        upper_room[number] = room + 1
+        return room
+
+    upper_room = defaultdict()
+
+    for i in room_number:
+        room = is_assigned(i, upper_room)
+        answer.append(room)
+    return answer
