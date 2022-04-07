@@ -1,0 +1,24 @@
+from itertools import product
+
+def solution(user_id, banned_id):
+    
+    idx = [[i for i in range(len(d)) if d[i] == '*']
+           for d in banned_id]
+
+    table = [[] for _ in range(len(banned_id))]
+    for uid in user_id:
+        for bid in range(len(banned_id)):
+            if len(uid) == len(banned_id[bid]):
+                compare = bytearray(uid, encoding='utf8')
+                for i in range(len(idx[bid])):
+                    compare[idx[bid][i]] = ord('*')
+                if compare.decode() == banned_id[bid]:
+                    table[bid].append(uid)
+
+    a = list(product(*table))
+    s_list = []
+    for i in a:
+        b = set(i)
+        if b not in s_list and len(b) == len(table):
+            s_list.append(b)
+    return len(s_list)
