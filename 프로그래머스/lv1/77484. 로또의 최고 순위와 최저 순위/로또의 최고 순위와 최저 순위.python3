@@ -1,0 +1,23 @@
+def solution(lottos, win_nums):
+    answer = []
+    high_match = 0
+    low_match = 0
+    for i in lottos:
+        if i == 0:
+            high_match += 1
+            continue
+        if i in win_nums:
+            high_match += 1
+            low_match += 1
+            continue
+            
+    if high_match != 0:
+        answer.append(7-high_match)
+    else:
+        answer.append(6)
+    if low_match != 0:
+        answer.append(7-low_match)
+    else:
+        answer.append(6)
+    
+    return answer
