@@ -1,0 +1,47 @@
+def solution(number, hand):
+    answer = ''
+    L = [1,4,7]
+    R = [3,6,9]
+    move_L = ['*']
+    move_R = ['#']
+    for i in number :
+        if i in L:
+            move_L.append(i)
+            answer += "L"
+        elif i in R :
+            move_R.append(i)
+            answer += "R"
+        else :
+            phone = [[1,2,3],[4,5,6],[7,8,9],['*',0,'#']]
+            distance_L = 0
+            distance_R = 0
+            for j in phone :
+                if i in j :
+                    col = phone.index(j)
+                    row = j.index(i)
+
+
+            for k in phone :
+                if move_L[len(move_L)-1] in k :
+                    distance_L += abs(phone.index(k)-col) + abs(k.index(move_L[len(move_L)-1]) - row)
+
+            for z in phone :
+                if move_R[len(move_R)-1] in z :
+                    distance_R += abs(phone.index(z) - col) + abs(z.index(move_R[len(move_R)-1]) - row)
+
+
+            if distance_L > distance_R :
+                move_R.append(i)
+                answer += 'R'
+            elif distance_L < distance_R :
+                move_L.append(i)
+                answer += 'L'
+            else :
+                if hand == 'right' :
+                    move_R.append(i)
+                    answer += 'R'
+                else :
+                    move_L.append(i)
+                    answer += 'L'
+
+    return answer
