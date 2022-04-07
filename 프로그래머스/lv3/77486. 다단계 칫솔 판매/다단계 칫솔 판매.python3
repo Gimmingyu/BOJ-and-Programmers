@@ -1,0 +1,31 @@
+import math
+from collections import deque
+
+def solution(enroll, referral, seller, amount):
+    answer = {i: 0 for i in enroll}
+    tree = {enr: (ref if ref != '-' else None) for enr, ref in zip(enroll, referral)}
+    _seller = seller[:]
+    _amount = list(map(lambda x: x*100, amount))
+#   수익 계산
+    while _seller:
+        s = _seller.pop() 
+        a = _amount.pop() 
+        
+        # 추천인 수익 반영
+        ref = tree[s]
+        # 상납금 측정 
+        give_away = math.trunc(a * 0.1) 
+
+        # 판매자 수익 반영
+        if give_away >= 1:
+            a -= give_away
+            answer[s] += a 
+            if ref is not None:
+                _amount.append(give_away)
+                _seller.append(ref)
+
+        else:
+            answer[s] += a
+            continue
+
+    return list(answer.values())
