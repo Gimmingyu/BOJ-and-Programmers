@@ -1,0 +1,20 @@
+from collections import defaultdict, deque
+
+def solution(board, moves):
+    stack = deque()
+    result = 0
+    # 몇 번 열을 뽑을 지
+    for m in moves:
+        for i in range(len(board)):
+            if board[i][m - 1] == 0:
+                continue
+            else:
+                stack.append(board[i][m - 1])
+                board[i][m - 1] = 0
+                while len(stack) >= 2 and stack[-2] == stack[-1]:
+                    print(stack.pop())
+                    print(stack.pop())
+                    print(f"i = {i}, m = {m}")
+                    result += 2
+                break
+    return result
