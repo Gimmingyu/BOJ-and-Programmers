@@ -1,0 +1,5 @@
+def solution(array, commands):
+    answer = []
+    for number in commands:
+        answer.append(sorted(array[number[0]-1:number[1]])[number[2]-1])
+    return answer
