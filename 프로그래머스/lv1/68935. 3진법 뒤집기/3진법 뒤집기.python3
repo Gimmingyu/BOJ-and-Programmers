@@ -1,0 +1,7 @@
+def solution(n):
+    t_num = [] 
+    answer = ""
+    while n != 0:
+        answer += str(n%3)
+        n //= 3
+    return int(answer, base=3)
