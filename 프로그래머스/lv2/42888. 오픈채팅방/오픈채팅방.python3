@@ -1,0 +1,30 @@
+def solution(record):
+    answer = []
+    user = {}
+    length = len(record)
+    after = record
+
+    for i in record:
+        master = i.split()
+        if master[0] == 'Enter':
+            user[master[1]] = master[2]
+            continue
+
+        elif master[0] == "Change":
+            user[master[1]] = master[2]
+            continue
+        else:
+            continue
+
+    for i in record:
+        comment = i.split()
+        if comment[0] == "Enter":
+            answer.append(f"{user[comment[1]]}님이 들어왔습니다.")
+            continue
+        elif comment[0] == "Leave":
+            answer.append(f"{user[comment[1]]}님이 나갔습니다.")
+            continue
+        else:
+            continue
+
+    return answer
