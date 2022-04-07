@@ -1,0 +1,9 @@
+def solution(numbers):
+    answer = []
+    for m in range(len(numbers)):
+        for g in range(m+1,len(numbers)):
+            answer.append(numbers[m]+numbers[g])
+    answer = set(answer)
+    mg = list(answer)
+    mg.sort()
+    return mg
