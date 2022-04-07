@@ -1,0 +1,10 @@
+from collections import Counter
+
+def solution(s):
+    arr = s.replace('{', "")
+    arr = arr.replace('}', "")
+    arr = list(map(int, arr.split(',')))
+    counter = Counter(arr)
+    answer = list(counter.keys())
+    answer.sort(reverse=True, key=lambda x: counter[x])
+    return answer
