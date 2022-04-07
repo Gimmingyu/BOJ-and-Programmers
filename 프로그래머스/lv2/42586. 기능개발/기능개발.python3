@@ -1,0 +1,22 @@
+import math
+
+def solution(progresses, speeds):
+    answer = []
+    job_list = [math.ceil((100-j)/speeds[i]) for i,j in enumerate(progresses)]
+    
+    print(job_list)
+    for job in job_list:
+        if not answer:
+            is_await = job
+            answer.append(1)
+            continue
+        elif job <= is_await:
+            print(f"{job} is lower than {is_await}")
+            answer[-1] += 1
+            continue
+        print(f"{job} is bigger than {is_await}")
+        answer.append(1)
+        is_await = job
+        
+        
+    return answer
