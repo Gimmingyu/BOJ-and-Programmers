@@ -1,0 +1,9 @@
+def solution(arr):
+    ans = []
+    for i in arr:
+        if ans:
+            if i != ans[-1]:
+                ans.append(i)
+        else :
+            ans.append(i)
+    return ans
