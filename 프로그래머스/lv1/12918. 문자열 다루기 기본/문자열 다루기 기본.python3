@@ -1,0 +1,6 @@
+def solution(s):
+    if (len(s) == 4 or len(s) == 6) and s. isdecimal():
+        return True
+    else:
+        return False
+    # return s.isdecimal() if len(s) == 4 or 6 else False
