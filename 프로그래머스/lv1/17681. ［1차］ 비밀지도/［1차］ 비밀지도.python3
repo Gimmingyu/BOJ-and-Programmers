@@ -1,0 +1,43 @@
+def solution(n, arr1, arr2):
+    answer = []
+    beta_1 = []
+    beta_2 = []
+    for i in arr1:
+        number = []
+        while i != 0:
+            elem = i % 2
+            i //= 2
+            number.append(elem)
+        number.reverse()
+        while len(number) < n:
+            number.insert(0, 0)
+        beta_1.append(number)
+
+    for j in arr2:
+        number = []
+        while j != 0:
+            elem = j % 2
+            j //= 2
+            number.append(elem)
+        number.reverse()
+        while len(number) < n:
+            number.insert(0, 0)
+        beta_2.append(number)
+
+    for k in range(n):
+        for m in range(n):
+            if beta_1[k][m] == 1 or beta_2[k][m] == 1:
+                beta_1[k][m] = 1
+            else:
+                continue
+    
+    for n in beta_1:
+        is_wall = ""
+        for v in n:
+            if v == 0:
+                is_wall += " "
+            else:
+                is_wall += "#"
+        answer.append(is_wall)
+
+    return answer
