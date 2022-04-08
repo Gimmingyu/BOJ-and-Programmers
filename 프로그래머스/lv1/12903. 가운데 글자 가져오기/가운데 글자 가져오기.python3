@@ -1,0 +1,9 @@
+def solution(s):
+    answer = ''
+    print(len(s), type(len(s)))
+    if len(s)%2 != 0:
+        return str(s[(int(len(s)/2))])
+    else:
+        return str(s[int((len(s)//2-1)): int((len(s)//2+1))])
+        
+    return
