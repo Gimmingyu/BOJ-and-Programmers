@@ -1,0 +1,8 @@
+def solution(price, money, count):
+    answer = 0
+    while True:
+        answer += (price*count)
+        count -= 1
+        if count == 0:
+            break
+    return 0 if money-answer > 0 else abs(money - answer)
