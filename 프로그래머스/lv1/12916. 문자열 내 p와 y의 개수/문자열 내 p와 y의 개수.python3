@@ -1,0 +1,8 @@
+def solution(s):
+    answer = True
+    s = s.upper()
+    number_P = s.count("P")
+    number_Y = s.count("Y")
+    if number_P != number_Y:
+        answer = False
+    return answer
