@@ -1,0 +1,58 @@
+import re
+
+
+def solution(dartResult):
+    answer = 0
+
+    score = re.findall('\d+', dartResult)
+    bonus = re.findall('[A-Z]+', dartResult)
+    option = re.findall('[#, *]+', dartResult)
+
+    new_option = option
+    new_score = []
+
+    if len(option) != 3:
+
+        if len(option) == 2:
+            first_option = dartResult.find(option[0])  #
+            new_score.append(str(int(dartResult[first_option - 2])))
+            second_option = dartResult.rfind(option[1])
+            new_score.append(str(int(dartResult[second_option - 2])))
+        elif len(option) == 1:
+            first_opt = dartResult.find(option[0])
+            new_score.append(str(int(dartResult[first_opt - 2])))
+
+        for i in range(len(score)):
+            if score[i] not in new_score:
+                option.insert(i, 'X')
+
+    for bn in range(len(bonus)):
+        if bonus[bn] == "S":
+            bonus[bn] = 1
+        elif bonus[bn] == "D":
+            bonus[bn] = 2
+        else:
+            bonus[bn] = 3
+    
+    opt = 0
+    plus = 0
+    before = 0
+    while opt < 3:
+        plus = int(score[opt]) ** bonus[opt]
+        if option[opt] == '*' and opt == 0: 
+            plus *= 2
+            answer += plus
+
+        elif option[opt] == '*' and opt != 0:
+            plus *= 2
+            answer += plus + before
+
+        elif option[opt] == '#':  
+            plus *= -1
+            answer += plus
+        else:
+            answer += plus
+        opt += 1
+        before = plus 
+
+    return answer
