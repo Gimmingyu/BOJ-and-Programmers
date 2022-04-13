@@ -1,0 +1,13 @@
+def solution(n,m):
+    
+    def gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+    
+    def lcm(a, b):
+        return (a * b) // gcd(a, b)
+    
+    g = gcd(n, m)
+    l = lcm(n, m)
+    return [g, l]
