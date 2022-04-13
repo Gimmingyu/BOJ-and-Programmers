@@ -1,0 +1,11 @@
+def solution(n):
+    answer = ''
+    kk = int(n)
+    while kk >0:
+        if kk%2 == 1:
+            answer = '수'+answer
+            kk = kk-1
+        else:
+            answer = '박'+answer
+            kk = kk-1
+    return answer
