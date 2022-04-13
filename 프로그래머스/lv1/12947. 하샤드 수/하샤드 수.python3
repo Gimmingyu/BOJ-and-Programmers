@@ -1,0 +1,10 @@
+def solution(x):
+    answer = True
+    sum = 0
+    x = str(x)
+    for i in range(0,len(x)):
+        sum = sum + int(x[i])
+    x = int(x)
+    if x%sum != 0:
+        answer = False
+    return answer
