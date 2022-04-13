@@ -1,0 +1,12 @@
+def solution(n):
+    answer = 0
+    numlist = []
+    n = str(n)
+    for i in n:
+        numlist.append(i)
+    n = ''
+    numlist.sort()
+    for j in numlist:
+        n = j + n
+    answer = answer + int(n)
+    return answer
