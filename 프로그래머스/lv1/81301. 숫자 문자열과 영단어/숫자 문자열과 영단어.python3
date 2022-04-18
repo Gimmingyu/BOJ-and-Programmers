@@ -1,0 +1,28 @@
+def solution(s):
+    d = {
+        'zero' : '0',
+        'one' : '1',
+        'two' : '2',
+        'three' : '3',
+        'four' : '4',
+        'five' : '5',
+        'six' : '6',
+        'seven' : '7',
+        'eight' : '8',
+        'nine' : '9',
+    }
+    answer = ''
+    word = bytearray(s, encoding="utf-8")
+    start, end = ord('0'), ord('9')
+    for i in range(len(word)):
+        if start <= word[i] <= end:
+            answer += word.decode()[i]
+        else:
+            sub = word.decode()[i]
+            idx = 0
+            while sub not in d and i + idx < len(word) -1 :
+                idx += 1
+                sub += word.decode()[i + idx]
+            if sub in d:
+                answer += d[sub]
+    return int(answer)
